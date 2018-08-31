@@ -1,0 +1,54 @@
+
+server:
+  port: 40002
+logging:
+    level:
+        org:
+            springframework:
+                web:
+                    servlet:
+                        DispatcherServlet: INFO
+
+spring:
+  application:
+    name: springredistest
+
+  sleuth:
+      sampler:
+          probability: 1.0
+  redis:
+      database: 0
+      host: 127.0.0.1
+      port: 6379
+
+  datasource:
+          connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+          driver-class-name: com.ibm.db2.jcc.DB2Driver
+          filters: stat,wall
+          initialSize: 5
+          maxActive: 20
+          maxPoolPreparedStatementPerConnectionSize: 20
+          maxWait: 60000
+          minEvictableIdleTimeMillis: 300000
+          minIdle: 5
+          password: panmin1W
+          poolPreparedStatements: true
+          testOnBorrow: false
+          testOnReturn: false
+          testWhileIdle: true
+          timeBetweenEvictionRunsMillis: 60000
+          type: com.alibaba.druid.pool.DruidDataSource
+          url: jdbc:db2://127.0.0.1:50000/SAMPLE
+          username: db2inst1
+eureka:
+  instance:
+    leaseRenewalIntervalInSeconds: 10
+  client:
+    registryFetchIntervalSeconds: 5
+    serviceUrl:
+      defaultZone:  http://eureka.didispace.com/eureka/
+
+
+debug: false
+
+
